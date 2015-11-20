@@ -69,3 +69,77 @@ TSum = 2 * 1
 ```
 
 Because there is no n, we can say that for all types of input, it will always take a constant time unit of 2. This means that this algorithm is O(1) so we can say that it is a **constant time** algorithm.
+
+### Asymptotic Notation
+
+- We use asymptotic notation to generalise algorithms to classify how they would run on a theoretical machine.
+- Big Oh notation is the upper bound (the worst case) - There exists a value C that will always make g(n) > f(n)
+- Big Omega notation is the lower bound (the best case) - There exists a value C that will always make g(n) < f(n)
+- Big Theta notation is the middle bound (the average case) - There exists values C1 and C2 - C1g(n) <= f(n) <= C2g(n)
+
+The constant values can be anything that are positive or greater than 0.
+
+- The notation is stated as - "There exists a value C that for significantly large n (input size)...."
+
+### General Rules For Time Complexity
+
+- You can remove the lower order terms and the constant multiplier for the remaining term for an equation for T(n)
+- The run time of a loop is found by multiplying the times the loop runs against the time taken to execute the commands within the loop.
+- You can find the runtime of a function by adding the fragments together.
+
+```
+someMethod() {
+  int a;
+  a = 5; // 1.
+  a++;
+  
+  for (i = 0; i < n; i++) { // 2.
+    // Some simple statements
+  }
+  
+  for (i = 0; i < n; i++) { //3.
+    for (j = 0; j < n; j++) {
+      // Some simple statements
+    }
+  }
+}
+```
+
+In the above code snippet, the runtime can be calculated by adding the time taken to execute steps 1, 2 and 3.
+
+```
+T(n) = O(1) + O(n) + O(n^2)
+T(n) = O(n^2)
+```
+
+It is **O(n^2)** as the other terms will become insignificant as the value of n -> infinity.
+
+This means that the largest fragement of a function will determine the maximum time taken for the function to run. 
+
+- If the function we are dealing with contains **conditional statements**, the rule here to determine the worst case runtime complexity will be the condition that contains the worst case, we do not add them together.
+
+```
+function() {
+  if (some condition) {
+    for (i = 0; i < n; i++) { 1.
+      // Some simple statements
+    {
+  }
+  else {
+    for (i = 0; i < n; i++) {  //2.
+      for (j = 0; j < n; j++) {
+        // Some simple statements
+      }
+    }
+  }
+}
+```
+
+The time complexity in the above snippet will be T(n) = O(n^2) as the **else** condition will be the one that takes longer to run.
+
+### Space Complexity
+
+- Is a measurement of how efficient the code uses memory, and is the same as how you would calculate time complexity.
+- It is just the largest piece of memory that is used when the program is run.
+
+
